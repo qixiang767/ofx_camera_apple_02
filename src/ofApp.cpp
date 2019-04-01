@@ -123,7 +123,7 @@ void ofApp::mousePressed(int x, int y, int button){
         sprintf(fileNameStr, "%s_%d.png", date.c_str(), screenshotCounter);
         screenshot.save(fileNameStr);
         
-        python.exec("import image_comparison; image_comparison.test_fun()");
+        python.exec("import image_comparison; image_comparison.extract_images()");
         
         
         // image processing ///////////////////////////////////////////
