@@ -2,7 +2,7 @@
 
 //--------------------------------------------------------------
 void ofApp::setup(){
-//    python.setup();
+    //    python.setup();
     cam.setup(640, 480);
     cam.listDevices();
     
@@ -20,7 +20,7 @@ void ofApp::setup(){
     // append data/python to PYTHONPATH
     python.appendPath(ofToDataPath("python"));
     // import and call python script function
-//    python.exec("import dataname; dataname.functionname()");
+    //    python.exec("import dataname; dataname.functionname()");
     //-> https://qiita.com/keitasumiya/items/95f4016a835435ab0bcb
 }
 
@@ -35,16 +35,18 @@ void ofApp::draw(){
     ofSetColor(255);
     cam.draw(0, 0);
     ofRectangle myRect(x1, y1, rectWidth, rectHeight);
-        
+    
     if(imageShow == true){
         
         
         ofFill();
         screenshot.draw(x1,y1,rectWidth,rectHeight);
+        
         //execute my_fn in test_script.py
-        python.exec("import test_script; test_script.my_fn()");
-
-
+        //        python.exec("import test_script; test_script.my_fn()");
+        
+        
+        
         /*
          // image processing ///////////////////////////////////////////
          ofSetColor(point1);
@@ -105,68 +107,76 @@ void ofApp::mouseDragged(int x, int y, int button){
 
 //--------------------------------------------------------------
 void ofApp::mousePressed(int x, int y, int button){
-    // write if statement after video available
-    
-    std::printf("mousePressed\n");
-    screenshot.grabScreen(x1,y1,rectWidth,rectHeight);
-    
-    
-    // image processing ///////////////////////////////////////////
-    unsigned char *pixels = screenshot.getPixels().getData();
-    int w = screenshot.getWidth();
-    int h = screenshot.getHeight();
-    int type = screenshot.getImageType();
-    int bpp = screenshot.getPixels().getBitsPerPixel()/ 8;
-    std::printf("imageType : %d, bpp : %d\n", type, bpp);
-    // myImageType will be equal to one of these constants:
-    //   OF_IMAGE_GRAYSCALE (aka a value of 0)
-    //   OF_IMAGE_COLOR (aka a value of 1)
-    //   OF_IMAGE_COLOR_ALPHA (aka a value of 2)
-    // bpp here means amounts of channel e.g 4 -> rgba
-    
-    
-    /*
-     // point1 top-left
-     point1.r = pixels[index*4];
-     point1.g = pixels[index*4+1];
-     point1.b = pixels[index*4+2];
-     point1.a = pixels[index*4+3]; // alpha
-     //    ofSetColor(point1);
-     // point2 top-right
-     point2.r = pixels[x1 + w + y1 * w];
-     point2.g = pixels[x1 + w + y1 * w + 1];
-     point2.b = pixels[x1 + w + y1 * w + 2];
-     //    ofSetColor(point2);
-     // point3 buttom-left
-     point3.r = pixels[x1 + (y1 + h) * w];
-     point3.g = pixels[x1 + (y1 + h) * w + 1];
-     point3.b = pixels[x1 + (y1 + h) * w + 2];
-     //    ofSetColor(point3);
-     // point4 buttom-right
-     point4.r = pixels[x1 + w + (y1 + h) * w];
-     point4.g = pixels[x1 + w + (y1 + h) * w + 1];
-     point4.b = pixels[x1 + w + (y1 + h) * w + 2];
-     //    ofSetColor(point4);
-     // point5 center
-     point5.r = pixels[x1 + w/2 + (y1 + h/2) * w];
-     point5.g = pixels[x1 + w/2 + (y1 + h/2) * w + 1];
-     point5.b = pixels[x1 + w/2 + (y1 + h/2) * w + 2];
-     //    ofSetColor(point5);
-     
-     
-     std::printf("color R : %d, color G : %d, color B : %d, color A : %d\n", point1.r, point1.g, point1.b, point1.a);
-     
-     std::printf("pixels : %zu\n", screenshot.getPixels().size());
-     //    std::printf("rectIndex : %i\n", x1*y1*4);
-     ///////////////////////////////////////////
-     */
-    
-    
-    
-    
-    
-    
+
     imageShow = !imageShow;
+    
+    if(imageShow){
+        screenshotCounter++;
+        // grab screen
+        std::printf("mousePressed\n");
+        screenshot.grabScreen(x1,y1,rectWidth,rectHeight);
+        
+        // save screenshot
+        char fileNameStr[255];
+        string date = ofGetTimestampString();// time stamp
+        sprintf(fileNameStr, "%s_%d.png", date.c_str(), screenshotCounter);
+        screenshot.save(fileNameStr);
+        
+        python.exec("import image_comparison; image_comparison.test_fun()");
+        
+        
+        // image processing ///////////////////////////////////////////
+        unsigned char *pixels = screenshot.getPixels().getData();
+        int w = screenshot.getWidth();
+        int h = screenshot.getHeight();
+        int type = screenshot.getImageType();
+        int bpp = screenshot.getPixels().getBitsPerPixel()/ 8;
+        // std::printf("imageType : %d, bpp : %d\n", type, bpp);
+        // myImageType will be equal to one of these constants:
+        //   OF_IMAGE_GRAYSCALE (aka a value of 0)
+        //   OF_IMAGE_COLOR (aka a value of 1)
+        //   OF_IMAGE_COLOR_ALPHA (aka a value of 2)
+        // bpp here means amounts of channel e.g 4 -> rgba
+        
+        
+        /*
+         // point1 top-left
+         point1.r = pixels[index*4];
+         point1.g = pixels[index*4+1];
+         point1.b = pixels[index*4+2];
+         point1.a = pixels[index*4+3]; // alpha
+         //    ofSetColor(point1);
+         // point2 top-right
+         point2.r = pixels[x1 + w + y1 * w];
+         point2.g = pixels[x1 + w + y1 * w + 1];
+         point2.b = pixels[x1 + w + y1 * w + 2];
+         //    ofSetColor(point2);
+         // point3 buttom-left
+         point3.r = pixels[x1 + (y1 + h) * w];
+         point3.g = pixels[x1 + (y1 + h) * w + 1];
+         point3.b = pixels[x1 + (y1 + h) * w + 2];
+         //    ofSetColor(point3);
+         // point4 buttom-right
+         point4.r = pixels[x1 + w + (y1 + h) * w];
+         point4.g = pixels[x1 + w + (y1 + h) * w + 1];
+         point4.b = pixels[x1 + w + (y1 + h) * w + 2];
+         //    ofSetColor(point4);
+         // point5 center
+         point5.r = pixels[x1 + w/2 + (y1 + h/2) * w];
+         point5.g = pixels[x1 + w/2 + (y1 + h/2) * w + 1];
+         point5.b = pixels[x1 + w/2 + (y1 + h/2) * w + 2];
+         //    ofSetColor(point5);
+         
+         
+         std::printf("color R : %d, color G : %d, color B : %d, color A : %d\n", point1.r, point1.g, point1.b, point1.a);
+         
+         std::printf("pixels : %zu\n", screenshot.getPixels().size());
+         //    std::printf("rectIndex : %i\n", x1*y1*4);
+         ///////////////////////////////////////////
+         */
+     
+    }
+    
     //    std::printf("imageShow : %s\n", x ? "true" : "false");
 }
 

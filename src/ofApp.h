@@ -26,6 +26,7 @@ public:
     
     ofVideoGrabber cam;
     ofImage screenshot;
+    int screenshotCounter = 0;
     
     ofPixels pixel1;
     ofColor point1;

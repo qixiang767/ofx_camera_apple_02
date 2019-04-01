@@ -396,8 +396,8 @@
 					../../../addons/ofxPy/libs/pybind11,
 					../../../addons/ofxPy/libs/pybind11/include,
 					../../../addons/ofxPy/libs/pybind11/include/pybind11,
-					../../../addons/ofxPy/src,
 					"/Users/noriyukisuzuki/.pyenv/versions/anaconda3-4.3.1/include",
+					../../../addons/ofxPy/src,
 					"/Users/noriyukisuzuki/.pyenv/versions/anaconda3-4.3.1/include/python3.6m",
 				);
 				ICON = "$(ICON_NAME_DEBUG)";
@@ -406,11 +406,7 @@
 				INSTALL_PATH = /Applications;
 				LD_RUNPATH_SEARCH_PATHS = "/Users/noriyukisuzuki/.pyenv/versions/anaconda3-4.3.1/lib";
 				"LD_RUNPATH_SEARCH_PATHS[arch=*]" = "/Users/noriyukisuzuki/.pyenv/versions/anaconda3-4.3.1/lib";
-				LIBRARY_SEARCH_PATHS = (
-					"<Multiple",
-					"values>",
-					"/Users/noriyukisuzuki/.pyenv/versions/anaconda3-4.3.1/lib",
-				);
+				LIBRARY_SEARCH_PATHS = "/Users/noriyukisuzuki/.pyenv/versions/anaconda3-4.3.1/lib";
 				"LIBRARY_SEARCH_PATHS[arch=*]" = "/Users/noriyukisuzuki/.pyenv/versions/anaconda3-4.3.1/lib";
 				PRODUCT_NAME = "$(TARGET_NAME)Debug";
 				WRAPPER_EXTENSION = app;
@@ -437,8 +433,8 @@
 					../../../addons/ofxPy/libs/pybind11,
 					../../../addons/ofxPy/libs/pybind11/include,
 					../../../addons/ofxPy/libs/pybind11/include/pybind11,
-					../../../addons/ofxPy/src,
 					"/Users/noriyukisuzuki/.pyenv/versions/anaconda3-4.3.1/include",
+					../../../addons/ofxPy/src,
 					"/Users/noriyukisuzuki/.pyenv/versions/anaconda3-4.3.1/include/python3.6m",
 				);
 				ICON = "$(ICON_NAME_RELEASE)";
@@ -446,11 +442,7 @@
 				INFOPLIST_FILE = "openFrameworks-Info.plist";
 				INSTALL_PATH = /Applications;
 				LD_RUNPATH_SEARCH_PATHS = "/Users/noriyukisuzuki/.pyenv/versions/anaconda3-4.3.1/lib";
-				LIBRARY_SEARCH_PATHS = (
-					"<Multiple",
-					"values>",
-					"/Users/noriyukisuzuki/.pyenv/versions/anaconda3-4.3.1/lib",
-				);
+				LIBRARY_SEARCH_PATHS = "/Users/noriyukisuzuki/.pyenv/versions/anaconda3-4.3.1/lib";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = app;
 				baseConfigurationReference = E4EB6923138AFD0F00A09F29;
