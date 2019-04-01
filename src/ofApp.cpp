@@ -19,6 +19,9 @@ void ofApp::setup(){
     python.setup();
     // append data/python to PYTHONPATH
     python.appendPath(ofToDataPath("python"));
+    // import and call python script function
+//    python.exec("import dataname; dataname.functionname()");
+    //-> https://qiita.com/keitasumiya/items/95f4016a835435ab0bcb
 }
 
 //--------------------------------------------------------------
@@ -32,13 +35,16 @@ void ofApp::draw(){
     ofSetColor(255);
     cam.draw(0, 0);
     ofRectangle myRect(x1, y1, rectWidth, rectHeight);
-    
+        
     if(imageShow == true){
         
         
         ofFill();
         screenshot.draw(x1,y1,rectWidth,rectHeight);
-        
+        //execute my_fn in test_script.py
+        python.exec("import test_script; test_script.my_fn()");
+
+
         /*
          // image processing ///////////////////////////////////////////
          ofSetColor(point1);

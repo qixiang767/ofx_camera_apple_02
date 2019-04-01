@@ -1,7 +1,7 @@
-print 'hello from test_script.py'
+print ('hello from test_script.py')
 
 def my_fn():
-	print 'hello from python function'
+	print ('hello from python function')
 
 def get_random():
 	import random
