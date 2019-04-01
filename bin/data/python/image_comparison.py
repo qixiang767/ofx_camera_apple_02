@@ -16,7 +16,6 @@ def test_fun():
       pngFiles = glob.glob(file_path)
       latest_file = max(pngFiles, key=os.path.getctime)
       print(latest_file)
-      # print(pngFiles)
 
 
 

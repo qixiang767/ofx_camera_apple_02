@@ -71,12 +71,13 @@ void ofApp::draw(){
     ofNoFill();
     ofSetColor(255);
     ofDrawRectangle(x1, y1, rectWidth, rectHeight);
+    /*
     ofDrawCircle(x1, y1, diameter);
     ofDrawCircle(x1+myRect.getWidth(), y1, diameter);
     ofDrawCircle(x1, y1+myRect.getHeight(), diameter);
     ofDrawCircle(x1+myRect.getWidth(), y1+myRect.getHeight(), diameter);
     ofDrawCircle(x1+myRect.getWidth()/2, y1+myRect.getHeight()/2, diameter);
-    
+    */
     
 }
 
