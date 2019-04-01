@@ -2,6 +2,7 @@
 
 //--------------------------------------------------------------
 void ofApp::setup(){
+//    python.setup();
     cam.setup(640, 480);
     cam.listDevices();
     
@@ -13,11 +14,17 @@ void ofApp::setup(){
     imageShow = false;
     
     screenshot.grabScreen(x1, y1, rectWidth, rectHeight);
+    
+    putenv((char *)"PYTHONHOME=/Users/noriyukisuzuki/.pyenv/versions/anaconda3-4.3.1");
+    python.setup();
+    // append data/python to PYTHONPATH
+    python.appendPath(ofToDataPath("python"));
 }
 
 //--------------------------------------------------------------
 void ofApp::update(){
     cam.update();
+    ofSetWindowTitle(ofToString(ofGetFrameRate()));
 }
 
 //--------------------------------------------------------------

@@ -1,7 +1,7 @@
 #pragma once
 
 #include "ofMain.h"
-//#include "ofxPy.h"
+#include "ofxPy.h"
 
 class ofApp : public ofBaseApp{
     
@@ -22,8 +22,7 @@ public:
     void dragEvent(ofDragInfo dragInfo);
     void gotMessage(ofMessage msg);
     
-    //        ofxPython python;
-    //        ofxPythonObject script;
+    ofxPy::Context  python;
     
     ofVideoGrabber cam;
     ofImage screenshot;
