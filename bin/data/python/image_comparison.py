@@ -14,7 +14,9 @@ def test_fun():
       # load image
       file_path = "/Users/noriyukisuzuki/of_v0.9.8_osx/apps/myApps/camera_002/bin/data/*.png"
       pngFiles = glob.glob(file_path)
-      print(pngFiles)
+      latest_file = max(pngFiles, key=os.path.getctime)
+      print(latest_file)
+      # print(pngFiles)
 
 
 
